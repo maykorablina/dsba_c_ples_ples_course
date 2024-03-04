@@ -16,11 +16,35 @@
 #include <vector>
 #include <stdexcept>
 
-int sumIntegersInFile(const std::string& inputFilePath, const std::string& outputFilePath) {
-    
-}
+int sumIntegersInFile(const std::string& inputFilePath, const std::string& outputFilePath){
+    std::string line;
+    int number;
+    int sum = 0;
+    std::ifstream in(inputFilePath);
+    if (in.is_open())
+    {
+        while (std::getline(in, line))
+        {
+            std::istringstream iss(line);
+            while (iss >> number) {
+                sum += number;
+            }
+        }
+    }
+    in.close();
+
+    std::ofstream out;
+    out.open(outputFilePath);
+    if (out.is_open())
+    {
+        out << sum << '\n';
+    }
+    out.close();
+};
 
 int main() {
-    
+    std::string input = "/Users/mayakorablina/Yandex.Disk.localized/CodingProjects/cpp_course_2_sem/2023_2024_2nd_sem/week6/11_12_sem/problem1_sum/input.txt";
+    std::string output = "/Users/mayakorablina/Yandex.Disk.localized/CodingProjects/cpp_course_2_sem/2023_2024_2nd_sem/week6/11_12_sem/problem1_sum/output.txt";
+    sumIntegersInFile(input, output);
     return 0;
 }

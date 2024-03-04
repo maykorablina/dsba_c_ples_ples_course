@@ -1,3 +1,7 @@
-/Users/mgordenko/Course-C-/2023-2024 2nd sem/week2/03-04 sem/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/mgordenko/Course-C-/2023-2024 2nd sem/week2/03-04 sem/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/mgordenko/Course-C-/2023-2024 2nd sem/week2/03-04 sem/cmake-build-debug/CMakeFiles/problem1_hello.dir
+/Users/mayakorablina/Yandex.Disk.localized/CodingProjects/cpp_course_2_sem/2023_2024_2nd_sem/week6/11_12_sem/cmake-build-debug/CMakeFiles/problem1_sum.dir
+/Users/mayakorablina/Yandex.Disk.localized/CodingProjects/cpp_course_2_sem/2023_2024_2nd_sem/week6/11_12_sem/cmake-build-debug/CMakeFiles/problem2_csv.dir
+/Users/mayakorablina/Yandex.Disk.localized/CodingProjects/cpp_course_2_sem/2023_2024_2nd_sem/week6/11_12_sem/cmake-build-debug/CMakeFiles/problem3_matrix.dir
+/Users/mayakorablina/Yandex.Disk.localized/CodingProjects/cpp_course_2_sem/2023_2024_2nd_sem/week6/11_12_sem/cmake-build-debug/CMakeFiles/problem4_snake.dir
+/Users/mayakorablina/Yandex.Disk.localized/CodingProjects/cpp_course_2_sem/2023_2024_2nd_sem/week6/11_12_sem/cmake-build-debug/CMakeFiles/problem5_workers.dir
+/Users/mayakorablina/Yandex.Disk.localized/CodingProjects/cpp_course_2_sem/2023_2024_2nd_sem/week6/11_12_sem/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/mayakorablina/Yandex.Disk.localized/CodingProjects/cpp_course_2_sem/2023_2024_2nd_sem/week6/11_12_sem/cmake-build-debug/CMakeFiles/rebuild_cache.dir

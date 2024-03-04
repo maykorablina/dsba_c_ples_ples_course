@@ -15,4 +15,8 @@ set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
 
 #### the list of targets ####
 add_executable(problem1_sum                problem1_sum/main.cpp)
+add_executable(problem2_csv               problem2_csv/main.cpp)
+add_executable(problem3_matrix              problem3_matrix/main.cpp)
+add_executable(problem4_snake               problem4_snake/main.cpp)
+add_executable(problem5_workers               problem5_workers/main.cpp)
 
