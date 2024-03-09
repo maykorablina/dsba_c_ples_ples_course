@@ -41,14 +41,12 @@ std::vector<std::string> split(std::string str, char separator) {
     for (int i = 0; i < str.length(); i++) {
         if (str[i] == separator) {
             ans.push_back(str.substr(index_start, length - 1));
-//            std::cout << str.substr(index_start, length - 1) << '\n';
             index_start = i + 1;
             length = 0;
         }
         length += 1;
     }
     ans.push_back(str.substr(index_start));
-//    std::cout << str.substr(index_start) << '\n';
     return ans;
 }
 

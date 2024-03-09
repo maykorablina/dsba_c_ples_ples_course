@@ -42,6 +42,7 @@ int sumIntegersInFile(const std::string& inputFilePath, const std::string& outpu
     out.close();
 };
 
+
 int main() {
     std::string input = "/Users/mayakorablina/Yandex.Disk.localized/CodingProjects/cpp_course_2_sem/2023_2024_2nd_sem/week6/11_12_sem/problem1_sum/input.txt";
     std::string output = "/Users/mayakorablina/Yandex.Disk.localized/CodingProjects/cpp_course_2_sem/2023_2024_2nd_sem/week6/11_12_sem/problem1_sum/output.txt";

@@ -126,6 +126,7 @@ void write_matrix(std::vector<std::vector<int>> matrix, char sep, std::string fi
         int rows = matrix.size();
         int cols = matrix[0].size();
 
+
         for (int i = 0; i < rows; i++) {
             std::vector<int> row = matrix[i];
             for (int j = 0; j < cols; j++) {
