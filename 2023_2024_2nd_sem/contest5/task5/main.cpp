@@ -1,47 +1,78 @@
-//
-// Created by Майя Кораблина on 01/02/24.
-//
 #include <iostream>
+#include <vector>
 
-std::vector<std::string> split(const std::string& str, char delimiter) {
-    std::vector<std::string> ans;
-    std::string temp = "";
-    for (char c : str) {
-        if (c == delimiter) {
-            ans.push_back(temp);
-            temp = "";
-        }
-        else {
-            temp += c;
-        }
-    }
-    ans.push_back(temp);
-    return ans;
-}
+using std::vector;
 
-
-
-
-int main()
+class Minesweeper
 {
-    int n, m, k;
-    int counter = 0;
-    int nm;
-    std::cin >> n >> m >> k;
-    if (n < m or m < k) {
-        std::cout << 0;
-        return 0;
+private:
+    size_t M, N;
+    vector<vector<int>> Table;
+
+public:
+    Minesweeper(size_t m, size_t n): M(m), N(n)
+    {
+        Table.resize(M);
+        for (auto& row : Table)
+            row.resize(N);
     }
 
-    int mk = m / k;
-    int rem_mk = m % k;
-    while (n >= m) {
-        nm = n / m;
-        n = n % m;
-
-        counter += nm * mk;
-        n += nm * rem_mk;
+    size_t Rows() const
+    {
+        return M;
     }
-    std::cout << counter;
-    return 0;
+
+    size_t Columns() const
+    {
+        return N;
+    }
+
+    void SetMine(size_t i, size_t j) {
+        Table[i][j] = -1;
+    }
+
+    int operator() (size_t i, size_t j) const
+    {
+        return Table[i][j];
+    }
+
+    void CheckForMinesAround() {
+        for (size_t i = 0; i != M; ++i)
+            for (size_t j = 0; j != N; ++j)
+                if (Table[i][j] != -1)
+                {
+                    CheckForMinesAround(i, j);
+                }
+    }
+
+private:
+    void CheckForMinesAround(size_t i, size_t j) {
+        int counter = 0;
+        for (int dx = -1; dx <= 1; ++dx) {
+            for (int dy = -1; dy <= 1; ++dy)
+                if (0 <= i + dx && i + dx < M &&
+                    0 <= j + dy && j + dy < N &&
+                    Table[i + dx][j + dy] == -1
+                        ) {
+                    ++counter;
+                }
+        }
+        Table[i][j] = counter;
+    }
+};
+
+std::ostream& operator << (std::ostream& out, const Minesweeper& ms)
+{
+    for (size_t i = 0; i != ms.Rows(); ++i)
+    {
+        for (size_t j = 0; j != ms.Columns(); ++j)
+        {
+            if (ms(i, j) == -1)
+                out << '*';
+            else
+                out << ms(i, j);
+        }
+        out << "\n";
+    }
+    return out;
 }
