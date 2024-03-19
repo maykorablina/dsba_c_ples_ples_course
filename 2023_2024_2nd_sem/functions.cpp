@@ -164,15 +164,47 @@ void appendToFile(const std::string& filePath, const std::string& content) {
     out.close();
 };
 
-// ВЫВОД
+// записать матрицу в файл
+void write_matrix(std::vector<std::vector<int>> matrix, char sep, std::string file_path) {
+    std::ofstream out;
+    out.open(file_path);
+    if (out.is_open()) {
+        int rows = matrix.size();
+        int cols = matrix[0].size();
 
 
+        for (int i = 0; i < rows; i++) {
+            std::vector<int> row = matrix[i];
+            for (int j = 0; j < cols; j++) {
+                out << row[j] << sep;
+            }
+            out << '\n';
+        }
+    } else std::cerr << "Something went wrong";
+}
 
+// ВВОД И ВЫВОД
+// ввести массив указанной длины
+std::vector<int> input_array(int size){
+    std::vector<int> ans;
+    int n;
+    for (int i = 0; i < size; i++) {
+        std::cin >> n;
+        ans.push_back(n);
+    }
+    return ans;
+}
 
+// вывести массив через разделитель
+void print_array(std::vector<int> v, char sep){
+    for (int i = 0; i < v.size(); i++){
+        if (i == v.size() - 1) std::cout << v[i];
+        else std::cout << v[i] << sep;
+    }
+    std::cout << '\n';
+}
 
-
-
-
+//вывести матрицу через разделитель
 void print_matrix(std::vector<std::vector<int>> matrix, char sep){
     int rows = matrix.size();
     int cols = matrix[0].size();
