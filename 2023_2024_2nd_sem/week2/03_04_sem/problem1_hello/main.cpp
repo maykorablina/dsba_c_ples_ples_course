@@ -31,11 +31,28 @@
 #include <string>
 #include <iostream>
 
+void print_array(std::vector<int> v, char sep){
+    for (int i = 0; i < v.size(); i++){
+        if (i == v.size() - 1) std::cout << v[i];
+        else std::cout << v[i] << sep;
+    }
+    std::cout << '\n';
+}
+
+std::vector<int> input_array(int size){
+    std::vector<int> ans;
+    int n;
+    for (int i = 0; i < size; i++) {
+        std::cin >> n;
+        ans.push_back(n);
+    }
+    return ans;
+}
+
+
 int main()
 {
-  std::string name;
-  std::cin >> name;
-  std::cout << "Hello, " << name;
-  return 0;
+    std::vector<int> a = input_array(6);
+    print_array(a, ' ');
 }
 

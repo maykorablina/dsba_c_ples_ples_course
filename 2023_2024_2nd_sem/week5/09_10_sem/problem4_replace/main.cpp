@@ -69,10 +69,6 @@ std::string replace(std::string str, std::string old_string, std::string new_str
     return ans;
 }
 
-
-
-
-
 void findAndReplaceInFile(const std::string& filePath, const std::string& toFind, const std::string& toReplace) {
     std::string text;
     std::string line;

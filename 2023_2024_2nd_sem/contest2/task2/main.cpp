@@ -15,7 +15,6 @@ bool is_palindrome(std::string str) {
     for (int i = no_spaces.length() - 1; i >= 0; i--) {
         reversed_string += no_spaces[i];
     }
-//    std::cout << no_spaces << "\n" << reversed_string << "\n";
     if (no_spaces == reversed_string) return true;
     else return false;
 }

@@ -1,0 +1,4 @@
+Aboba,chlenosos,1320
+Abobus,norm_chelik,2200000
+Pupa,negr,110
+Lupa,president,137053261
