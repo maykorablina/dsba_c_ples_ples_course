@@ -22,16 +22,40 @@ Output the obtained results: the total number of responses, the most and least
 popular seasons, and the position of the first response choosing summer.
 */
 
-#include <algorithm>
 #include <iostream>
-#include <map>
-#include <numeric>
+#include <algorithm>
 #include <vector>
+#include <numeric>
+#include <map>
 
 int main() {
-  std::vector<char> responses = {'W', 'S', 'U', 'A', 'W', 'S', 'U',
-                                 'A', 'S', 'U', 'A', 'W', 'S', 'U', 'A', 'W'};
+    std::vector<char> responses = {'W', 'S', 'U', 'A', 'W', 'S', 'U',
+                                   'A', 'S', 'U', 'A', 'W', 'S', 'U', 'A', 'W'};
 
- 
-  return 0;
+    int total_responses = responses.size();
+
+    std::map<char, int> season_counts;
+    for (char season : {'W', 'S', 'U', 'A'}) {
+        season_counts[season] = std::count_if(responses.begin(), responses.end(), [season](char response) {
+            return response == season;
+        });
+    }
+
+    auto most_popular = *std::max_element(season_counts.begin(), season_counts.end(),
+                                          [](const auto& a, const auto& b) { return a.second < b.second; });
+    auto least_popular = *std::min_element(season_counts.begin(), season_counts.end(),
+                                           [](const auto& a, const auto& b) { return a.second < b.second; });
+
+    auto first_summer = std::find_if(responses.begin(), responses.end(), [](char response) {
+        return response == 'U';
+    });
+    int summer_position = first_summer != responses.end() ? std::distance(responses.begin(), first_summer) + 1 : -1;
+
+    std::cout << "Total number of responses: " << total_responses << std::endl;
+    std::cout << "Most popular season: " << most_popular.first << " with " << most_popular.second << " votes" << std::endl;
+    std::cout << "Least popular season: " << least_popular.first << " with " << least_popular.second << " votes" << std::endl;
+    std::cout << "Position of the first summer lover: " << summer_position << std::endl;
+
+    return 0;
 }
+
