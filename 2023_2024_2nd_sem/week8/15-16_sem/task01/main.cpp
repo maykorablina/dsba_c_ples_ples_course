@@ -119,6 +119,5 @@ int main() {
     std::vector<int> sales = {12000, 15000, 13000, 19000, 17000, 16000,
                             18000, 21000, 20000, 17000, 22000, 19000};
     print_data(sales);
-  
-  return 0;
+    return 0;
 }
