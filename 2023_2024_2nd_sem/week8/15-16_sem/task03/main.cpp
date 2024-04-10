@@ -31,11 +31,16 @@ Saving the updated database to a file.
 #include <fstream>
 #include <vector>
 #include <string>
+#include "iostream"
+#include "sstream"
+#include "fstream"
 
 struct Student {
     std::string name;
     int age;
     double grade;
+
+    Student(std::string n = "q", int a = 9, double g = 90.0): name(n), age(a), grade(g) {}
 
     friend std::istream& operator>>(std::istream& in, Student& student) {
         in >> student.name >> student.age >> student.grade;
@@ -48,18 +53,79 @@ struct Student {
     }
 };
 
+std::string read_file(std::string file_path) {
+    std::string text;
+    std::ifstream in(file_path);
+    if (in.is_open())
+    {
+        std::stringstream buff;
+        buff << in.rdbuf();
+        text = buff.str();
+    }
+    in.close();
+    return text;
+}
 
+std::vector<std::string> split(std::string str, char separator) {
+    std::vector<std::string> ans;
+    int index_start = 0;
+    int length = 1;
+    for (int i = 0; i < str.length(); i++) {
+        if (str[i] == separator) {
+            ans.push_back(str.substr(index_start, length - 1));
+            index_start = i + 1;
+            length = 0;
+        }
+        length += 1;
+    }
+    ans.push_back(str.substr(index_start));
+    return ans;
+}
+
+void print_array(std::vector<std::string> v, char sep){
+    for (int i = 0; i < v.size(); i++){
+        if (i == v.size() - 1) std::cout << v[i];
+        else std::cout << v[i] << sep;
+    }
+    std::cout << '\n';
+}
+
+void readRecordsFromFile(std::string path, std::vector<Student>& students) {
+    std::string data = read_file(path);
+    std::vector<std::string> string_data = split(data, '\n');
+    for (int i = 0; i < string_data.size(); i++) {
+        std::vector<std::string> row = split(string_data[i], ' ');
+        Student stud = Student(row[0], std::stoi(row[1]), std::stod(row[2]));
+
+        students.push_back(stud);
+    }
+}
+
+void displayRecords(std::vector<Student> students) {
+    for (int i = 0; i < students.size(); i++) {
+        std::cout << students[i] << '\n';
+    }
+}
+
+void addRecord(std::vector<Student>& students) {
+    Student s;
+    std::cin >> s;
+    students.push_back(s);
+}
+
+void deleteRecord(std::vector<Student>& students, int index) {
+
+}
 
 int main() {
     std::vector<Student> students;
-
-    readRecordsFromFile("students.txt", students);
+    readRecordsFromFile("/Users/mayakorablina/Yandex.Disk.localized/CodingProjects/cpp_course_2_sem/2023_2024_2nd_sem/week8/15-16_sem/task03/students.txt", students);
 
     addRecord(students);
-    deleteRecord(students, 1);
+//    deleteRecord(students, 1);
     displayRecords(students);
 
-    writeRecordsToFile("updated_students.txt", students);
+//    writeRecordsToFile("updated_students.txt", students);
 
     return 0;
 }
