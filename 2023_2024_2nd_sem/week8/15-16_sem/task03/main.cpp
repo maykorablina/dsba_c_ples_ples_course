@@ -111,21 +111,29 @@ void addRecord(std::vector<Student>& students) {
     Student s;
     std::cin >> s;
     students.push_back(s);
+
 }
 
 void deleteRecord(std::vector<Student>& students, int index) {
+    students.erase(students.begin() + index);
+//    vec.erase(std::remove(vec.begin(), vec.end(), value_to_remove), vec.end());
+}
 
+void saveDatabase(std::vector<Student>& students, std::string path) {
+    std::ofstream out(path);
+    if (out.is_open()) {
+        for (int i = 0; i < students.size(); i++) {
+            out << students[i].name << ' ' << students[i].age << ' ' << students[i].grade <<'\n';
+        }
+    }
 }
 
 int main() {
     std::vector<Student> students;
     readRecordsFromFile("/Users/mayakorablina/Yandex.Disk.localized/CodingProjects/cpp_course_2_sem/2023_2024_2nd_sem/week8/15-16_sem/task03/students.txt", students);
-
     addRecord(students);
-//    deleteRecord(students, 1);
     displayRecords(students);
-
-//    writeRecordsToFile("updated_students.txt", students);
+    saveDatabase(students, "/Users/mayakorablina/Yandex.Disk.localized/CodingProjects/cpp_course_2_sem/2023_2024_2nd_sem/week8/15-16_sem/task03/output.txt");
 
     return 0;
 }
