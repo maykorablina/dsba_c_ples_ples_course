@@ -1,3 +1,38 @@
-algorithm - a process or set of rules to be followed in calculations or other problem-solving operations, especially by a computer.
-database - a structured set of data held in a computer, especially one that is accessible in various ways.
-programming - the process of writing computer programs.
+Algorithm - A set of rules to be followed in calculations or other problem-solving operations, especially by a computer.
+API - Application Programming Interface, a set of rules that allows programs to communicate with each other.
+Big Data - Extremely large data sets that may be analyzed computationally to reveal patterns, trends, and associations.
+Binary - A system of numerical notation that has 2 rather than 10 as a base.
+Bit - The basic unit of information in computing and digital communications which can have the value of 0 or 1.
+Byte - A group of binary digits or bits (usually eight) operated on as a unit.
+Cache - A hardware or software component that stores data so future requests for that data can be served faster.
+Cloud Computing - The practice of using a network of remote servers hosted on the Internet to store, manage, and process data.
+Compiler - A program that translates code written in a high-level programming language into machine code.
+CPU - Central Processing Unit, the primary component of a computer that processes instructions.
+Data Mining - The practice of examining large databases in order to generate new information.
+Database - A structured set of data held in a computer, especially one that is accessible in various ways.
+Debugging - The process of identifying and removing errors from computer hardware or software.
+Encryption - The process of converting information or data into a code, especially to prevent unauthorized access.
+Firewall - A part of a computer system or network that is designed to block unauthorized access while permitting outward communication.
+Firmware - Permanent software programmed into a read-only memory.
+Gateway - A node in a network that serves as an entrance to another network.
+GPU - Graphics Processing Unit, a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images.
+HTML - Hypertext Markup Language, the standard markup language for creating web pages and web applications.
+HTTP - Hypertext Transfer Protocol, an application protocol for distributed, collaborative, hypermedia information systems.
+IP Address - A unique string of numbers separated by periods that identifies each computer using the Internet Protocol to communicate.
+Kernel - The central component of most operating systems; it is a bridge between applications and the actual data processing done at the hardware level.
+Malware - Software that is specifically designed to disrupt, damage, or gain unauthorized access to a computer system.
+Neural Network - A network or circuit of neurons, or in a modern sense, an artificial neural network composed of artificial neurons or nodes.
+Operating System - Software that, after being initially loaded into the computer by a boot program, manages all of the other application programs in a computer.
+Protocol - A set of rules governing the exchange or transmission of data between devices.
+Router - A networking device that forwards data packets between computer networks.
+Server - A computer or computer program which manages access to a centralized resource or service in a network.
+SSL - Secure Sockets Layer, a standard security technology for establishing an encrypted link between a server and a client.
+URL - Uniform Resource Locator, a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it.
+Virus - A type of malicious software program ('malware') that, when executed, replicates itself by modifying other computer programs and inserting its own code.
+VPN - Virtual Private Network, extends a private network across a public network and enables users to send and receive data as if their computing devices were directly connected to the private network.
+Machine Learning - A field of computer science that uses statistical techniques to give computer systems the ability to learn from data.
+Deep Learning - A subset of machine learning in artificial intelligence that has networks capable of learning unsupervised from data that is unstructured or unlabeled.
+AI - Artificial Intelligence, the simulation of human intelligence processes by machines, especially computer systems.
+Cloud Storage - A model of computer data storage in which the digital data is stored in logical pools, the physical storage spans multiple servers.
+Data Science - A multi-disciplinary field that uses scientific methods, processes, algorithms and systems to extract knowledge and insights from structured and unstructured data.
+Aleko - The guy who is not attracted by women.
