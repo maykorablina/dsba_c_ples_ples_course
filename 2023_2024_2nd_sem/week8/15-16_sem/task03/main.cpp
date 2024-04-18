@@ -36,7 +36,7 @@ Saving the updated database to a file.
 #include "fstream"
 
 struct Student {
-    std::string name;
+    std::string word;
     int age;
     double grade;
 
