@@ -159,38 +159,72 @@
  }
 
 
- void test6()
- {
-     std::map<std::string, Citation*> citations;
+void test6()
+{
+    std::map<std::string, Citation*> citations;
 
-     std::map<std::string, std::string> dataWeb = {
-             {"key", "{latex2023}"},
-             {"title", "LaTeX"},
-             {"year", "2023"},
-             {"url", "https://en.wikipedia.org/wiki/LaTeX"}};
+    std::map<std::string, std::string> dataWeb1 = {
+            {"key", "{latex2023}"},
+            {"title", "LaTeX"},
+            {"year", "2023"},
+            {"url", "https://en.wikipedia.org/wiki/LaTeX"}};
 
-     addCitation(citations, CitationType::WebPage, dataWeb);
+    std::map<std::string, std::string> dataWeb2 = {
+            {"key", "{wikiarticle2}"},
+            {"title", "Important article"}, {"year", "2023"},
+            {"url", "https://en.wikipedia.org/wiki/Important"}};
 
+    std::map<std::string, std::string> dataWeb3 = {
+            {"key", "{wikiarticle3}"},
+            {"title", "Very important article"},
+            {"year", "2021"},
+            {"url", "https://en.wikipedia.org/wiki/MoreImportant"}};
 
-     std::map<std::string, std::string> dataArticle = {
-             {"key", "{hdrc}"},
-             {"title", "Gradient domain high dynamic range compression"},
-             {"year", "2002"},
-             {"journal", "Computer graphics and interactive techniques"},
-             {"lastname", "Fattal"},
-             {"firstname", "Raanan"}};
+    std::map<std::string, std::string> dataArticle1 = {
+            {"key", "{hdrc}"},
+            {"title", "Gradient domain high dynamic range compression"},
+            {"year", "2002"},
+            {"journal", "Computer graphics and interactive techniques"},
+            {"lastname", "Fattal"},
+            {"firstname", "Raanan"}};
 
+    std::map<std::string, std::string> dataArticle2 = {
+            {"key", "{lastname2022a}"},
+            {"title", "Gradient domain high dynamic range compression"},
+            {"year", "2022"},
+            {"journal", "Computer graphics and interactive techniques"},
+            {"lastname", "Lastname"},
+            {"firstname", "Person"}};
 
-     addCitation(citations, CitationType::Article, dataArticle);
-     std::string text = "Long text with citations {latex2023}.\nThis has been referenced in {hdrc}.\n";
-     insertInlineAlphabetical(text, citations);
-     std::cout << text << std::endl;
+    std::map<std::string, std::string> dataArticle3 = {
+            {"key", "{article1}"},
+            {"title", "Ordering data automatically"},
+            {"year", "2023"},
+            {"journal", "Journal of Data"},
+            {"lastname", "Aaronson"},
+            {"firstname", "Person"}};
 
-     for (std::map<std::string, Citation*>::value_type& citation: citations)
-     {
-         delete citation.second;
-     }
- }
+    addCitation(citations, CitationType::WebPage, dataWeb1);
+//    addCitation(citations, CitationType::WebPage, dataWeb2);
+//    addCitation(citations, CitationType::WebPage, dataWeb3);
+    addCitation(citations, CitationType::Article, dataArticle1);
+//    addCitation(citations, CitationType::Article, dataArticle2);
+//    addCitation(citations, CitationType::Article, dataArticle3);
+
+    std::string text = "Long text with citations {latex2023}.\n"
+                       "This has been referenced in {hdrc}.\n"
+                       "This has been referenced in {hdrc}.\n"
+                       "This has been referenced in {latex2023}.\n";
+//                       "{wikiarticle2}\n"
+//                       "{wikiarticle3}\n"
+//                       "{lastname2022a}\n"
+//                       "{article1}\n";
+    insertInlineAlphabetical(text, citations);
+    std::cout << text << std::endl;
+
+    for (std::map<std::string, Citation*>::value_type& citation: citations) delete citation.second;
+}
+
 
 
 // uncomment tests one by one
@@ -201,8 +235,8 @@ int main()
     // test2();
     // test3();
 //     test4();
-     test5();
-    // test6();
+//     test5();
+     test6();
 
     
     return 0;

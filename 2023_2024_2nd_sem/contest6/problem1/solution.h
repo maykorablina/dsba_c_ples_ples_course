@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include "set"
 
 enum class CitationType
 {
@@ -21,6 +22,8 @@ public:
     virtual void printCitation(std::ostream& ostr) const = 0;
     // task 3 function included here
     virtual std::string getInlineCitation() const = 0;
+    virtual int Type() const = 0;
+    virtual std::string Info() const = 0;
 
 protected:
     Citation(std::string t, int y) : _title(t), _year(y) {}
@@ -38,6 +41,7 @@ protected:
 class Article : public PublishedWork {
 protected:
     std::string _journal;
+    int _type = 0;
 public:
     Article(std::string title, int year, std::string name, std::string surname, std::string journal) : PublishedWork(name, surname, title, year), _journal(journal) {}
     void printCitation(std::ostream& ostr) const override {
@@ -49,6 +53,12 @@ public:
     std::string getInlineCitation() const override {
         std::string s = "[" + _lastname + ", " + std::to_string(_year) + "]";
         return s;
+    }
+    int Type() const override {
+        return 0;
+    }
+    std::string Info() const override {
+        return _lastname;
     }
 };
 
@@ -73,9 +83,16 @@ public:
         std::string s = "[Web page, " + std::to_string(_year) + "]";
         return s;
     }
+    int Type() const override{
+        return 1;
+    }
+    std::string Info() const override {
+        return _title;
+    }
 
 protected:
     std::string _url;
+    int _type = 1;
 };
 
 
@@ -178,9 +195,48 @@ void printBibliographyAppearance(std::string& text, const std::map<std::string, 
 // you may add additional functions
 
 
-void insertInlineAlphabetical(std::string& text, const std::map<std::string, Citation*>& citations)
-{
+void insertInlineAlphabetical(std::string& text, const std::map<std::string, Citation*>& citations) {
+    std::vector<std::string> keys;
+    std::vector<std::string> articles;
+    std::vector<std::string> webpages;
+    int index_start = 0;
+    int length = 0;
+    for (int i = 0; i < text.length(); i++) {
+        if (text[i] == '{') {
+            index_start = i;
+            length += 1;
+        }
+        if (length > 0 and text[i] != '}') {
+            length += 1;
+        }
+        if (text[i] == '}') {
+            std::string key = text.substr(index_start, length);
+            keys.push_back(key);
+            if (citations.at(key)->Type() == 0) {
+                if (std::find(articles.begin(), articles.end(), citations.at(key)->Info()) == articles.end()) {
+                    articles.push_back(citations.at(key)->Info());
+                }
+
+            } else {
+                if (std::find(webpages.begin(), webpages.end(), citations.at(key)->Info()) == webpages.end()) {
+                    webpages.push_back(citations.at(key)->Info());
+                }
+            }
+            length = 0;
+        }
+    }
+    std::sort(articles.begin(), articles.end());
+    std::sort(webpages.begin(), webpages.end());
+    articles.insert(articles.end(), webpages.begin(), webpages.end());
+
+    for (int i = 0; i < keys.size(); i++) {
+        auto start = text.find(keys[i]);
+        int length = keys[i].length();
+        auto position = std::find(articles.begin(), articles.end(), citations.at(keys[i])->Info());
+        int ind_pos = position - articles.begin() + 1;
+        std::string ans = "[" + std::to_string(ind_pos) + "]";
+        text.replace(start, length, ans);
+    }
 
 }
-
 #endif
