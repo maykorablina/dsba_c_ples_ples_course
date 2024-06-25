@@ -85,7 +85,7 @@ void readRecordsFromFile(const std::string& filePath, std::vector<Student>& stud
 
 void addRecord(std::vector<Student>& students){
     Student student;
-    std::cin >> student.name >> student.age >> student.grade;
+    std::cin >> student;
     students.push_back(student);
 }
 
